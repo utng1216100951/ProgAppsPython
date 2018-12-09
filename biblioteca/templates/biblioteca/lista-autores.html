@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <title>Lista de autores</title>
+    </head>
+    <body>
+        <nav class="navbar" role="navigation" aria-label="main navigation">
+            <div class="navbar-brand">
+                <a class="navbar-item" href="https://bulma.io">
+                    <h1 class="title">Biblioteca de Ashley</h1>
+                    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+            <div id="navbarBasicExample" class="navbar-menu">
+                <div class="navbar-start">
+                    <a class="navbar-item" href="autor/add">Agregar Autor</a>
+                    <a class="navbar-item">Documentation</a>
+                </div>
+            </div> 
+        </nav>
+
+        <!-- Table -->
+        <div class="container">
+            <table class="table">
+                <thead class="thead">
+                    <th>ID</th>
+                    <th>Nombres</th>
+                    <th>Nacionalidad</th>
+                    <th>Accion</th>
+                </thead>
+                <tbody class="tbody">
+                    {% for a in autores  %}
+                        <tr>
+                            <td>{{a.id}}</td>
+                            <td>{{a.nombre}}</td>
+                            <td>{{a.nacionalidad}}</td>
+                            <td><a href="{% url 'biblioteca_app:lista-libros' a.id %}">VER LIBROS</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
